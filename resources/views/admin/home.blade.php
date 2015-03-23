@@ -8,11 +8,10 @@
         <div class="row">
             <div class="col-md-offset-5 col-md-3">
                 <div class="form-login">
-                    <h4>Admin Login Form.</h4>
+                    <h4>Administrator Login</h4>
                     <input type="text" name="email" id="email" class="form-control input-sm chat-input" placeholder="email" />
                     </br>
-                    <input type="text" id="pass" name="pass" class="form-control input-sm chat-input" placeholder="password" />
-                    </br>
+
                     <div class="wrapper">
             <span class="group-btn">
                 <a href="#" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></a>

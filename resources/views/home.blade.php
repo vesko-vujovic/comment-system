@@ -51,4 +51,14 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+   @if(!Auth::check())
+     <h4>You are not logedin:</h4><br>
+     {!! link_to('facebook/login', 'Facebook Login', ['class' => 'btn btn-primary']) !!}
+   @else
+     <h5> Welcome </h5>
+      <strong>{{{ Auth::user()->name  }}}</strong>
+     {!! link_to('facebook/login', 'Logout', ['class' => 'btn btn-primary']) !!}
+   @endif
 @stop
