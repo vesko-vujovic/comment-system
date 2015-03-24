@@ -9,9 +9,19 @@ class Article extends Model {
 
 
 
-    public function getArticles()
+    public function getNewArticles()
     {
+        $newArticles = Article::all()->take(5)->sortByDesc('created_at');
 
+        return $newArticles;
+
+    }
+
+    public function readArticle($id)
+    {
+        $article  = Article::find($id);
+
+        return $article;
 
     }
 

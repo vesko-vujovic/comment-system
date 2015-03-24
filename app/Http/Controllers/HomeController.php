@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Article;
+use App\Category;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +34,23 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$obj      = new Category();
+		$cat      = $obj->getAllCategories();
+
+		$obj2     = new Article();
+		$article  = $obj2->getNewArticles();
+
+		return view('index')
+			      ->withCat($cat)
+			      ->withArt($article);
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+
+		return redirect('/');
+
 	}
 
 }

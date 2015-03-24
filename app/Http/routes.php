@@ -2,37 +2,47 @@
 
 /*
 |--------------------------------------------------------------------------
-| Comment system routes
+| Comment system application
 |--------------------------------------------------------------------------
 |
 | Here are all routes for this app
 |
 */
 
+/*
+ * User Routes
+ *
+ */
 
-Route::get('/', 'HomeController@index');
+ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
-Route::get('/admin', 'AdminController@logIn');
+ Route::get('facebook/loged/', ['as' => 'logedwithfacebook', 'uses' => 'FacebookController@getFacebookUser']);
 
-Route::get('facebook/login', function(){
+ Route::get('/logout', ['as' => 'logout', 'uses' => 'HomeController@logout']);
+
+ Route::get('facebook/login', function(){
 
    return \Laravel\Socialite\Facades\Socialite::with('facebook')->redirect();
 
-});
+ });
 
-Route::get('facebook/loged/', ['as' => 'logedwithfacebook', 'uses' => 'FacebookController@getFacebookUser']);
+
+
 
 
 Route::get('/test', function(){
 
-
+	$l = \Carbon\Carbon::now()->subDay(1);
+    dd($l);
 
 });
 
 
 
+/*
+ * Admin Routes For Application
+ *
+ */
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+
+
